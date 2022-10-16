@@ -15,7 +15,7 @@ type jsonResponse struct {
 
 // readJSON tries to read the body of a request and converts it into JSON
 func (app *Config) readJSON(w http.ResponseWriter, r *http.Request, data any) error {
-	maxBytes := 1048576 // megabyte
+	maxBytes := 1048576 // one megabyte
 
 	r.Body = http.MaxBytesReader(w, r.Body, int64(maxBytes))
 
