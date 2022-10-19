@@ -43,7 +43,7 @@ func connect() (*ampqp.Connection, error) {
 
 	// dont continue until rabbit is ready
 	for {
-		c, err := ampqp.Dial("amqp://guest:guest@localhost")
+		c, err := ampqp.Dial("amqp://guest:guest@rabbitmq") //change from localhost to rabbitmq to match with inside in docker-compose.yml
 		if err != nil {
 			fmt.Println("RabbitMQ not yet ready...")
 			counts++
