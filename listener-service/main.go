@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	ampqp "github.com/rabbitmq/amqp091-go"
+	amqp "github.com/rabbitmq/amqp091-go"
 )
 
 func main() {
@@ -36,14 +36,14 @@ func main() {
 	}
 }
 
-func connect() (*ampqp.Connection, error) {
+func connect() (*amqp.Connection, error) {
 	var counts int64
 	var backOff = 1 * time.Second
-	var connection *ampqp.Connection
+	var connection *amqp.Connection
 
 	// dont continue until rabbit is ready
 	for {
-		c, err := ampqp.Dial("amqp://guest:guest@rabbitmq") //change from localhost to rabbitmq to match with inside in docker-compose.yml
+		c, err := amqp.Dial("amqp://guest:guest@rabbitmq") //change from localhost to rabbitmq to match with inside in docker-compose.yml
 		if err != nil {
 			fmt.Println("RabbitMQ not yet ready...")
 			counts++
