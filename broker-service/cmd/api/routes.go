@@ -25,6 +25,8 @@ func (app *Config) routes() http.Handler {
 
 	mux.Post("/", app.Broker)
 
+	mux.Post("/log-grpc", app.LogViaGRPC)
+
 	// to handle all request for any microservices to deal with
 	mux.Post("/handle", app.HandleSubmission)
 
